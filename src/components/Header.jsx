@@ -1,13 +1,13 @@
-function Header(){
-    return(
+import { Link } from "react-router-dom";
+
+function Header() {
+    return (
         <div className="bar">
-            <button className="button">Home</button>
-            <button className="button">Shop</button>
-            <button className="button">Admin Portal</button>
+            <Link className="button" to="/">Home</Link>
+            <Link className="button" to="/shop">Shop</Link>
+            <Link className="button" to="/admin">Admin Portal</Link>
         </div>
-    )
-
-
+    );
 }
 
-export default Header
+export default Header;
