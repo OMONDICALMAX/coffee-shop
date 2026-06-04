@@ -1,0 +1,96 @@
+body{
+    background-color: hsl(35, 45%, 85%)
+}
+.bar {
+    background-color: hsl(25, 30%, 18%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+.button {
+    border: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: hsl(40, 60%, 92%);
+    cursor: pointer;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: hsl(40, 60%, 92%);
+    transition: width 0.3s ease;
+}
+
+.button:hover::after {
+    width: 100%;
+}
+.welcome {
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.welcome-text {
+    font-family: "Georgia", serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: hsl(30, 20%, 12%);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.welcome-paragraph {
+    font-family: Arial, sans-serif;
+    font-size: 1.1rem;
+    color: hsl(30, 15%, 35%);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto;
+}
+.foota{
+    text-align: center;
+}
+.welcomeBTN{
+    position: relative;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    border: solid 2px;
+    background-color: transparent;
+    margin-top: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: hsl(30, 20%, 12%);
+    z-index: 1;
+}
+
+.welcomeBTN::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: hsl(30, 20%, 12%);
+    transition: width 0.5s ease;
+    z-index: -1;
+}
+.welcomeBTN:hover{
+    color: white;
+}
+
+.welcomeBTN:hover::before{
+    width: 100%;
+}
