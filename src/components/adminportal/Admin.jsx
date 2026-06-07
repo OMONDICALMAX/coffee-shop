@@ -1,44 +1,88 @@
 import { useState } from "react";
 
-function Admin({ addCoffee }) {
-    const [formData, setFormData] = useState({
-        coffeeName: "",
-        description: "",
-        origin: "",
-        price: ""
+function Admin({ setCoffees }) {
+  const [formData, setFormData] = useState({
+    coffeeName: "",
+    description: "",
+    origin: "",
+    price: ""
+  });
+
+  function handleChange(e) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
     });
+  }
 
-    function handleChange(e) {
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch("http://localhost:3001/coffees", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+      .then((res) => res.json())
+      .then((newCoffee) => {
+        // update UI immediately
+        setCoffees((prev) => [...prev, newCoffee]);
+
+        // reset form
         setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
+          coffeeName: "",
+          description: "",
+          origin: "",
+          price: ""
         });
-    }
+      })
+      .catch((error) => {
+        console.error("Error adding coffee:", error);
+      });
+  }
 
-    function handleSubmit() {
-        addCoffee(formData);
+  return (
+    <div className="coffeeForm">
+      <h2>Add New Coffee</h2>
 
-        setFormData({
-            coffeeName: "",
-            description: "",
-            origin: "",
-            price: ""
-        });
-    }
+      <form onSubmit={handleSubmit}>
+        <input
+          name="coffeeName"
+          placeholder="Coffee name"
+          value={formData.coffeeName}
+          onChange={handleChange}
+        />
 
-    return (
-        <div className="coffeeForm">
+        <input
+          name="description"
+          placeholder="Description"
+          value={formData.description}
+          onChange={handleChange}
+        />
 
-            <input name="coffeeName" placeholder="Enter Coffee name" onChange={handleChange} value={formData.coffeeName} />
-            <input name="description" placeholder="Enter Coffee description" onChange={handleChange} value={formData.description} />
-            <input name="origin" placeholder="Enter Coffee origin" onChange={handleChange} value={formData.origin} />
-            <input name="price" type="number" placeholder="Enter Price" onChange={handleChange} value={formData.price} />
+        <input
+          name="origin"
+          placeholder="Origin"
+          value={formData.origin}
+          onChange={handleChange}
+        />
 
-            <button onClick={handleSubmit} className="welcomeBTN">
-                Submit
-            </button>
-        </div>
-    );
+        <input
+          name="price"
+          type="number"
+          placeholder="Price"
+          value={formData.price}
+          onChange={handleChange}
+        />
+
+        <button type="submit" className="welcomeBTN">
+          Add Coffee
+        </button>
+      </form>
+    </div>
+  );
 }
 
 export default Admin;

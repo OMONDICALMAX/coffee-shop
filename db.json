@@ -1,0 +1,33 @@
+{
+  "coffees": [
+    {
+      "id": "1",
+      "coffeeName": "Arabica",
+      "description": "Smooth coffee",
+      "origin": "Kenya",
+      "price": 5
+    },
+    {
+      "coffeeName": "Calmax Omondi",
+      "description": "Good Coffee",
+      "origin": "Kenya",
+      "price": "50",
+      "id": "21ZeVnrTZWo"
+    },
+    {
+      "coffeeName": "",
+      "description": "",
+      "origin": "",
+      "price": "",
+      "id": "PB0zw_Zqod4"
+    },
+    {
+      "coffeeName": "Calmax Omondi",
+      "description": "Good Coffee",
+      "origin": "Kenya",
+      "price": "50",
+      "id": "9pzcjbrd-2w"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
